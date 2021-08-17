@@ -1,0 +1,20 @@
+image: devops-knowledge-share-ui-svelte
+tag: "" 
+imagePullPolicy: Never
+readinessProbe:
+  exec:
+    command: ["curl", "localhost:3000"]
+  initialDelaySeconds: 30
+  periodSeconds: 5
+livenessProbe:
+  exec:
+    command: ["curl", "localhost:3000"]
+  initialDelaySeconds: 30
+  periodSeconds: 5
+resources:
+  requests:
+    memory: "64Mi"
+    cpu: "100m"
+  limits:
+    memory: "500Mi"
+    cpu: "500m"

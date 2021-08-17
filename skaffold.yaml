@@ -1,0 +1,25 @@
+apiVersion: skaffold/v2beta19
+kind: Config
+metadata:
+  name: svelte-app
+profiles:
+- name: docker-desktop
+  activation:
+    - kubeContext: docker-desktop
+  build:
+    artifacts:
+    - image: svelte-app
+  deploy:
+    helm:
+      releases:
+      - name: svelte-app
+        namespace: default
+        chartPath: ./charts/svelte-app
+        artifactOverrides:
+          image: svelte-app
+  portForward:
+  - resourceType: Service
+    resourceName: svelte-app
+    namespace: default
+    port: 3000
+    localPort: 3000
