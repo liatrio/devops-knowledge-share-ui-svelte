@@ -1,0 +1,17 @@
+version: 2.1
+description: |
+  Build a Svelte application.
+
+#executors:
+#  helm-executor:
+#    docker:
+#      - image: 'circleci/python:3'
+
+orbs:
+  custom-orb: liatrio-poc/circleci-orb-poc@dev:jeff-playground
+  
+workflows:
+  svelte-application:
+    jobs:
+      - custom-orb/npm-build:
+          executor: custom-orb/default
