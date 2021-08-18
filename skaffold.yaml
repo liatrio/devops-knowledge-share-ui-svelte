@@ -1,25 +1,25 @@
 apiVersion: skaffold/v2beta19
 kind: Config
 metadata:
-  name: svelte-app
+  name: devops-knowledge-share-ui-svelte
 profiles:
 - name: docker-desktop
   activation:
     - kubeContext: docker-desktop
   build:
     artifacts:
-    - image: svelte-app
+    - image: devops-knowledge-share-ui-svelte
   deploy:
     helm:
       releases:
-      - name: svelte-app
+      - name: devops-knowledge-share-ui-svelte
         namespace: default
-        chartPath: ./charts/svelte-app
+        chartPath: ./charts/devops-knowledge-share-ui-svelte
         artifactOverrides:
-          image: svelte-app
+          image: devops-knowledge-share-ui-svelte
   portForward:
   - resourceType: Service
-    resourceName: svelte-app
+    resourceName: devops-knowledge-share-ui-svelte
     namespace: default
     port: 3000
     localPort: 3000
